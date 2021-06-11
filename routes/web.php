@@ -11,5 +11,9 @@
 |
 */
 
-Route::get('/', 'PostController@index');
-Route::resource('posts', 'PostController');
+Route::get('/', 'PostController@index')->middleware('auth');
+Auth::routes([
+    'reset' => false,
+    'confirm' => false,
+]);
+Route::resource('posts', 'PostController')->middleware('auth');
